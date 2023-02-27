@@ -5,7 +5,7 @@ on:
     branches:
       - "main"
 env:
-  go-version: 1.19
+  go-version: "1.19"
 jobs:
   container_build_and_push:
     runs-on: ubuntu-22.04
@@ -20,11 +20,11 @@ jobs:
         uses: ./.github/actions/build_push
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          dir: './golang-all/golang'
-          container-image: 'golang' 
+          dir: './golang-all/golang-1.19-focal'
+          container-image: "golang"
       - name: Build golang-1.19-focal
         uses: ./.github/actions/build_push
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          dir: './golang-all/golang-focal'
-          container-image: 'golang' 
+          dir: './golang-all/golang-1.20-focal'
+          container-image: "golang"
