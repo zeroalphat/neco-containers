@@ -16,15 +16,27 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           go-version: ${{ env.go-version }}
-      - name: Build golang-1.19-jammy
-        uses: ./.github/actions/build_push
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          dir: './golang-all/golang-1.19-focal'
-          container-image: "golang"
       - name: Build golang-1.19-focal
         uses: ./.github/actions/build_push
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          dir: './golang-all/golang-1.20-focal'
+          dir: "./golang-all/golang-1.19-focal"
+          container-image: "golang"
+      - name: Build golang-1.19-jammy
+        uses: ./.github/actions/build_push
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          dir: "./golang-all/golang-1.19-jammy"
+          container-image: "golang"
+      - name: Build golang-1.20-focal
+        uses: ./.github/actions/build_push
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          dir: "./golang-all/golang-1.20-focal"
+          container-image: "golang"
+      - name: Build golang-1.20-jammy
+        uses: ./.github/actions/build_push
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          dir: "./golang-all/golang-1.20-jammy"
           container-image: "golang"
