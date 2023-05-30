@@ -12,6 +12,10 @@ inputs:
   github_token:
     description: "GitHub Token"
     required: true
+  platform:
+    description: "container build platform"
+    required: false
+    default: "linux/amd64"
 
 runs:
   using: "composite"
@@ -25,17 +29,17 @@ runs:
         if [ "$dir" = "" ]; then dir=${{ inputs.container-image }} ; fi
         image=${{ inputs.container-image }}
         TAG=$(cat ${dir}/TAG)
-        c=$(container-tag-exists ghcr.io/cybozu/$image $TAG)
+        c=$(container-tag-exists ghcr.io/zeroalphat/$image $TAG)
         # The stdout should be either "" or "found".
         if [ "$c" = "" ]; then
-            echo "BUILDS_TAG=ghcr.io/cybozu/$image:$TAG" >> $GITHUB_ENV
+            echo "BUILDS_TAG=ghcr.io/zeroalphat/$image:$TAG" >> $GITHUB_ENV
             
             if [ -f $dir/BRANCH ]; then
               if echo $TAG | grep -q -e - ; then
                 echo ===== Skip pushing branch tags for pre-release $TAG =====
               else
                 BRANCH=$(cat $dir/BRANCH)
-                echo "BUILDS_BRANCH=ghcr.io/cybozu/$image:$BRANCH" >> $GITHUB_ENV
+                echo "BUILDS_BRANCH=ghcr.io/zeroalphat/$image:$BRANCH" >> $GITHUB_ENV
               fi
             fi
         fi
@@ -53,7 +57,7 @@ runs:
       uses: docker/build-push-action@v4
       with:
         context: ${{ inputs.dir }}
-        platforms: linux/amd64,linux/arm64
+        platforms: ${{ inputs.platform }}
         push: ${{ github.event_name != 'pull_request' }}
         tags: |
           ${{ env.BUILDS_TAG }}
