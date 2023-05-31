@@ -29,11 +29,8 @@ runs:
         if [ "$dir" = "" ]; then dir=${{ inputs.container-image }} ; fi
         image=${{ inputs.container-image }}
         TAG=$(cat ${dir}/TAG)
-        c=$(container-tag-exists ghcr.io/zeroalphat/$image $TAG)
-        # The stdout should be either "" or "found".
         if [ "$c" = "" ]; then
             echo "BUILDS_TAG=ghcr.io/zeroalphat/$image:$TAG" >> $GITHUB_ENV
-            
             if [ -f $dir/BRANCH ]; then
               if echo $TAG | grep -q -e - ; then
                 echo ===== Skip pushing branch tags for pre-release $TAG =====
