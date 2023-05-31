@@ -34,4 +34,4 @@ jobs:
           github_token: ${{ secrets.GHCR_TOKEN }}
           dir: ${{ matrix.job.dir }}
           container-image: ${{ matrix.job.container-image }}
-          enable_arm64:  ${{ matrix.job.platform }}
+          enable_arm64:  ${{ matrix.job.enable_arm64 }}
