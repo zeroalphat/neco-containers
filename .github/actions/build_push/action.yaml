@@ -53,7 +53,7 @@ runs:
     - name: Set container build platform
       shell: bash
       run: |
-        if [ "${{ inputs.platform }}" = "true" ]; then 
+        if [ "${{ inputs.enable_arm64 }}" = "true" ]; then 
           echo "PLATFORM=linux/amd64,linux/arm64" >> $GITHUB_ENV
         else
           echo "PLATFORM=linux/amd64" >> $GITHUB_ENV
