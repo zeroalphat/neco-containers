@@ -24,12 +24,12 @@ jobs:
       - name: Setup build environment
         uses: ./.github/actions/setup
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GHCR_TOKEN }}
           go-version: ${{ env.go-version }}
       - name: Build container image
         uses: ./.github/actions/build_push
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GHCR_TOKEN }}
           dir: ${{ matrix.job.dir }}
           container-image: ${{ matrix.job.container-image }}
           platform:  ${{ matrix.job.platform }}
