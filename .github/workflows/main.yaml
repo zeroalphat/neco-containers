@@ -15,12 +15,6 @@ jobs:
           - dir: ./golang-all/golang-1.19-jammy
             container-image: "golang" 
             platform: "linux/amd64,linux/arm64"
-          - dir: "./golang-all/golang-1.20-focal"
-            container-image: "golang" 
-            platform: "linux/amd64,linux/arm64"
-          - dir: "./golang-all/golang-1.20-jammy"
-            container-image: "golang" 
-            platform: "linux/amd64,linux/arm64"
 
     runs-on: ubuntu-22.04
     env:
