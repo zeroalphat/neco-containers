@@ -15,8 +15,7 @@ inputs:
   enable_arm64:
     description: "Build container images with arm64"
     required: false
-    type: boolean
-    default: false
+    default: "false"
 
 runs:
   using: "composite"
