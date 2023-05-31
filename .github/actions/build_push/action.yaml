@@ -54,7 +54,7 @@ runs:
       shell: bash
       run: |
         enable_arm64=${{ inputs.enable_arm64 }}
-        if [ "enable_arm64" = "true" ]; then 
+        if [ "$enable_arm64" = "true" ]; then 
           echo "PLATFORM=linux/amd64,linux/arm64" >> $GITHUB_ENV
         else
           echo "PLATFORM=linux/amd64" >> $GITHUB_ENV
