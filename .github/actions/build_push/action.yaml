@@ -14,8 +14,8 @@ inputs:
     required: true
   enable_arm64:
     description: "Build container images with arm64"
-    required: false
     type: boolean
+    required: false
     default: false
 
 runs:
@@ -53,6 +53,7 @@ runs:
     - name: Set container build platform
       shell: bash
       run: |
+        echo ${{ inputs.enable_arm64 }}
         enable_arm64=${{ inputs.enable_arm64 }}
         if [ "$enable_arm64" = "true" ]; then 
           echo "PLATFORM=linux/amd64,linux/arm64" >> $GITHUB_ENV
