@@ -17,6 +17,8 @@ jobs:
             enable_arm64: true
           - dir: ./go-ipfs
             container-image: "go-ipfs"
+          - dir: ./go-test
+            container-image: "go-test"
 
     runs-on: ubuntu-22.04
     env:
