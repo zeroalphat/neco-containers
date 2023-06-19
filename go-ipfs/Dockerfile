@@ -1,5 +1,7 @@
 # referring to go-ipfs Dockerfile(https://github.com/ipfs/go-ipfs/blob/master/Dockerfile)
 FROM quay.io/cybozu/golang:1.17-focal AS build-idserver
+LABEL org.opencontainers.image.source="https://github.com/zeroalphat/neco-containers"
+
 WORKDIR /idserver
 COPY idserver/go.mod /idserver/
 COPY idserver/go.sum /idserver/
